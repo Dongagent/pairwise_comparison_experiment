@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Image Gallery</title>
+  <style>
+    /* Add spacing between images */
+    #image-gallery img {
+      margin: 10px;
+    }
+    .container {
+      display: flex; /* Use flexbox layout to align the text and figures */
+      justify-content: space-between; /* Add some space between the text and figures */
+      align-items: center; /* Align the text and figures vertically */
+    }
+    /* Resize images */
+    #image-gallery img {
+      /* max-width: 200px; Adjust the width as needed */
+      display: inline-block; /* Make the figures align horizontally */
+      width: 15%; /* Set the width of each figure */
+      margin: 2px; /* Remove any space between the figures */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .img {
+      /* max-width: 200px; Adjust the width as needed */
+      display: inline-block; /* Make the figures align horizontally */
+      width: 15%; /* Set the width of each figure */
+      margin: 2px; /* Remove any space between the figures */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .figure {
+      display: inline-block; /* Make the figures align horizontally */
+      width: 15%; /* Set the width of each figure */
+      margin: 2px; /* Remove any space between the figures */
+    }
+    .image-cropped-transform {
+      display: inline-block;
+      margin: 2px;
+      max-width: 100px;
+      width: 110px; /* Set the width of each figure */
+      height: 160px; /* Maintain aspect ratio */
+      background-position: 50px -40px;
+      object-fit: cover;
+      overflow: hidden;
+      /* transform: scale(0.99); */
+
+    }
+    @media screen and (max-width: 600px) {
+      /* Use media queries to make the layout responsive */
+      .container {
+        /*flex-direction: column;  Make the text and figures stack vertically on small screens */
+        /*align-items: flex-start;  Align the text and figures to the left */
+        margin: 2px;
+      }
+      figure {
+        display: block; /* Make the figures stack vertically on small screens */
+        width: 98%; /* Set the width of each figure to fill the screen */
+        margin: 1%; /* Add some space between the figures */
+      }
+      figcaption {
+        display: block; /* Show the captions on small screens */
+        text-align: left; /* Align the captions to the left */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>My Image Gallery</h1>
+
+  <script>
+    // Define an array of image URLs
+    var myURL = []
+    const imageUrls = [['an_490.png', 'an_449.png', 'an_497.png', 'an_437.png', 'an_467.png'], ['di_13.png', 'di_14.png', 'di_12.png', 'di_45.png', 'di_59.png', 'di_38.png', 'di_166.png', 'di_475.png', 'di_11.png', 'di_32.png', 'di_91.png', 'di_135.png', 'di_476.png', 'di_380.png', 'di_174.png', 'di_9.png', 'di_5.png', 'di_23.png', 'di_404.png', 'di_473.png', 'di_491.png'], ['fe_59.png', 'fe_93.png', 'fe_356.png', 'fe_427.png', 'fe_396.png'], ['ha_428.png', 'ha_393.png', 'ha_407.png', 'ha_422.png', 'ha_341.png'], ['sa_313.png', 'sa_496.png', 'sa_286.png', 'sa_140.png', 'sa_174.png'], ['su_275.png', 'su_245.png', 'su_261.png', 'su_369.png', 'su_337.png']]
+    const baseUrls = ['imgs/anger_selected_imgonly100/', 'imgs/disgust_selected_imgonly100/', 'imgs/fear_selected_imgonly100/','imgs/happiness_selected_imgonly100/','imgs/sadness_selected_imgonly100/','imgs/surprise_selected_imgonly100/',]
+    
+    for (var i = 0; i < imageUrls.length; i++) {
+      for (var j = 0; j < imageUrls[i].length; j++) {
+        myURL.push(baseUrls[i] + imageUrls[i][j])
+      }
+    }
+    
+    // Function to insert images into the container
+    function insertImages(imageUrls, containerId) {
+      const imageGallery = document.getElementById(containerId);
+      let imageHTML = '';
+
+      // Loop through the imageUrls array and create image tags for each URL
+      for (const imageUrl of imageUrls) {
+        imageHTML += `<img src="${imageUrl}" class="image-cropped-transform" >`;
+      }
+
+      // Insert the generated image HTML into the container
+      imageGallery.innerHTML = imageHTML;
+    }
+
+    // Function to add a new image gallery
+    function addNewGallery(url1, url2) {
+      var newGalleryImageUrls = []
+      for (var i = 0; i < url2.length; i++) {
+        newGalleryImageUrls.push(url1 + url2[i])
+      }
+      const numGalleries = document.querySelectorAll('.image-gallery').length;
+      const newGalleryId = `gallery${numGalleries + 1}`;
+
+      // Create a new div element for the new gallery
+      const newGalleryDiv = document.createElement('div');
+      newGalleryDiv.classList.add('image-gallery');
+      newGalleryDiv.id = newGalleryId;
+      newGalleryDiv.innerHTML = `<!-- Images for ${newGalleryId} will be inserted here -->`;
+
+      // Append the new gallery to the document
+      document.body.appendChild(newGalleryDiv);
+
+      insertImages(newGalleryImageUrls, newGalleryId);
+    }
+
+    // Call the insertImages function when the page loads
+    window.addEventListener('load', function() {
+      for (var i = 0; i < imageUrls.length; i++) {
+        addNewGallery(baseUrls[i], imageUrls[i]);
+      }
+    });
+  </script>
+</body>
+</html>

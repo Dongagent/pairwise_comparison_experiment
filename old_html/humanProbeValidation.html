@@ -1,0 +1,121 @@
+<!-- Don't edit these first few lines or everything will likely break -->
+<!-- Load in experiment_wrapper from common/templates -->
+{% extends "experiment_wrapper.html" %} 
+
+{% block js_content %}
+    {% load custom_tags %} <!-- This loads the combineExperimentNameAndVersion tag -->
+    {% load render_bundle from webpack_loader %}
+    {% render_bundle experiment_name|combineExperimentNameAndVersion:experiment_instance %}
+{% endblock %}
+
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+
+{% block head %} 
+<!-- This block will be placed within the <head> tag of the html page-->
+<!-- Place <scripts> and <link> tags (this goes into the <head>) -->
+<!-- Note that the .js and .css files for this version will already be loaded in automatically!! -->
+<!-- jQuery has also already been loaded automatically. -->
+{% endblock %}
+
+{% block prolificCompletionCode %}
+    <!-- If you're running your experiment on prolific, prolific will give you an url to redirect to when the experiment is complete. 
+    Enter that URL here
+    -->
+    <script> 
+        window.PROLIFIC_SUBMISSION_URL = 'https://app.prolific.co/submissions/complete?cc=451C0828'
+    </script>
+{% endblock %}
+
+
+{% block content %}
+<div id="content" class="content ">
+
+    <div id="sideMenu" class='sideMenu left'>
+        <div id="buttons" class="btnHolder">
+            <input type="submit" value="Back" id="back" class='disabled-btn'>
+            <span class="trialCounter ">
+                Image <span id="imageNumber">X</span> out of <span id="imagesN">Y</span> <br>
+                Mesh <span id="meshNumber">X</span> out of <span id="meshesN">Y</span> 
+            
+            
+            </span>
+            <input type="submit" value="Next" id="next">
+        </div>
+
+        <div id="light_1" class='lightWidget'>
+
+            <div class="sliders">
+                <h3>Light position</h3>
+                <label> X Axis (left-right)</label>
+                <div id="sliderX"></div>
+                <label> Y Axis (down-up)</label>
+                <div id="sliderY"></div>
+                <label> Z Axis (back-front)</label>
+                <div id="sliderZ"></div>
+                <div class="canvas2holder">
+                    <div id="canvas2"></div>
+                </div>
+                <h3>Light Intensity</h3>
+                <label> Directed light</label>
+                <div id="sliderIntensitySpotlight"></div>
+                <label>Undirected light</label>
+                <div id="sliderIntensityAmbient"></div>
+
+            </div>
+        </div>   
+    </div>
+    <div id="canvas" class="left"></div>
+
+</div>
+<div id="finished" class="content hidden">
+    <p></p>
+
+    Do you have any comments or questions?. <br>
+
+    <textarea id="feedbackText"  rows="5" cols="40"></textarea><br>
+    Click here to submit and finished the experiment. <br>
+    <!-- <input type="submit" value="submit_data" id="submit_data"> -->
+    <button id="submit_data"> Continue! </button>
+
+</div>
+
+
+{% endblock %}
+
+{% block tutorial %}
+    {% include 'ValidationProbeTutorial.html' %}
+{% endblock %}
+
+
+
+
+
+<!-- Most likely you will not need to change anything below this!! -->
+<!-- Most likely you will not need to change anything below this!! -->
+<!-- Most likely you will not need to change anything below this!! -->
+
+
+<!-- Make changes here to change the text presented to AMT workers when they are previewing the task.-->
+{% block preview %} 
+    {% if description %}
+        <p> {{ description}} </p>
+    {% else %}
+        <p> To get started accept this hit! </p>
+    {% endif %}
+{% endblock %}
+
+<!-- Make changes here to change the text presented to AMT workers when they have already done the task.-->
+{% block already_done %} 
+    {% if already_done %}
+        <p> {{ already_done}} </p>
+    {% else %}
+        <p> 
+            Our apologies. Our system informs us that you already did this hit, or a very similar hit. 
+            As such we can regretfully not let you perform this hit! 
+        </p>
+    {% endif %}
+{% endblock %}
+
+

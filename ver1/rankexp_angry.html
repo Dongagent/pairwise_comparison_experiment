@@ -1,0 +1,52 @@
+<!-- Don't edit these first few lines or everything will likely break -->
+<!-- Load in experiment_wrapper from common/templates -->
+{% extends "experiment_wrapper.html" %} 
+
+{% block js_content %}
+    <script src="/static/experiments/current/nikola_angry/files/rankexp_angry.js"></script>
+    <script src="/static/common/templates/default_wrapper.js"></script> 
+{% endblock %}
+
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~ EDIT FROM HERE  ~~~~~~~~~~~~~~~~ -->
+
+{% block prolificCompletionCode %}
+    <!-- If you're running your experiment on prolific, prolific will give you an url to redirect to when the experiment is complete. 
+    Enter that URL here
+    -->
+    <!-- <script>  -->
+        <!-- // window.PROLIFIC_SUBMISSION_URL = 'REPLACE_WITH_THE_URL_PROLIFIC_GAVE_YOU_IF_RUNNING_ON_PROLIFIC' -->
+        <!-- // window.PROLIFIC_SUBMISSION_URL = 'https://app.prolific.co/submissions/complete?cc=COMPLETION_CODE' # EXAMPLE ONLY! -->
+    <!-- </script> -->
+{% endblock %}
+
+{% block head %} 
+<!-- This block will be placed within the <head> tag of the html page-->
+<!-- Place <scripts> and <link> tags (this goes into the <head>) -->
+<!-- Note that the .js and .css files for this version will already be loaded in automatically!! -->
+<!-- jQuery has also already been loaded automatically. -->
+{% endblock %}
+
+
+{% block content %}
+<!-- Within here you can place your own experiment. All HTML goes here -->
+<!-- Remember to modify here -->
+    {% include 'comparisonexp_angry.html' %}  <!-- Placeholder  -->
+
+    <!-- You can add images by using the document.image_root variable, or directly by
+        linking the image to .'/static/experiments/current/EXPERIMENT_NAME_HERE/stimuli/''  -->
+
+    <!-- If needed, you can gain access to the condition variable through document.condition -->
+    
+{% endblock %}
+
+{% block tutorial %}
+
+    <!-- To add a tutorial, be sure to add it within a div with the id "tutorial", like the example below -->
+    <!-- Whenever the tutorial is finished, it should call "show('content_wrapper');" to continue.   -->
+
+    <!-- <div id="tutorial" class="tutorial ">
+        <p> Tutorial goes here! Yay..</p>
+    </div> -->
+{% endblock %}

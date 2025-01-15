@@ -1,0 +1,138 @@
+<div id="content" class="content">
+      <div id="page1" class="instruction_page">
+            <h3> Welcome!</h3><br>
+
+            CONSENT FORM. <br><br>Please click 'Continue' if you give your consent. <br><br>
+
+            This experiment is part of research into conducted at RIKEN, led by Dongsheng Yang (yang.dongsheng.46w@st.kyoto-u.ac.jp). <br><br>
+
+            PARTICIPANTS' RIGHTS<br>
+            You may decide to stop being a part of the research study at any time without explanation. You have the right to ask that any data you have supplied to that point be withdrawn/destroyed.<br>
+            You have the right to have your questions about the procedures answered (unless answering these questions would interfere with the outcome of the study).<br><br>
+            
+            BENEFITS AND RISKS<br>
+            There are no known benefits or risks for you in this study.<br><br>
+            
+            COST, REIMBURSEMENT AND COMPENSATION<br>
+            Your participation in this study is voluntary. You will receive money to compensate your for your time.<br><br>
+            
+            CONFIDENTIALITY/ANONYMITY<br>
+            The data we collect does not contain any personal information about you. No one will link the data you provided to identifying information.<br><br>
+            
+            <div class="consent-part">
+
+              <h2>Consent</h2>
+              <!-- Please only click on 'Continue' if you give your consent, after having read the above information.<br><br> -->
+              <p>By checking the box below, you confirm that you have read the above information, understand the risks and benefits of participating, and freely give your consent to participate in this study.</p>
+              <form id="my-form">
+                <input type="checkbox" name="consent" value="yes" required> I consent to participate in this study.
+                <br><br>
+                <button type="button" onclick="submitForm();" class="my_button">Submit</button>
+                <div id="error-message" style="color: red;"></div>
+              </form>
+            </div>
+      </div>
+
+      <div id="id_page" class="hidden instruction_page"> 
+        <form id="infoForm">
+          <label for="participant_id">Participant ID:</label>
+          <input type="text" id="participant_id" name="participant_id" required><br><br>
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select><br><br>
+
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" required><br><br>
+
+          <label for="area">Area:</label>
+          <select id="area" name="area">
+            <option value="Africa">Africa</option>
+            <option value="Antarctica">Antarctica</option>
+            <option value="Asia" selected="selected">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="North America">North America</option>
+            <option value="Oceania">Oceania</option>
+            <option value="South America">South America</option>
+          </select><br><br>
+
+          <input type="hidden" id="uuid" name="uuid" value="">
+          <!-- <input type="button" value="Submit" onclick="generateUUID()"> -->
+        </form>
+
+        <!-- Just for test -->
+        <!-- <p id="showID"></p>
+        <input type="button" id="show_id_btn" value="Show ID" onclick="showID()" /> <br> <br> -->
+        <h3>Please use a monitor display larger than 13 inches for this experiment.</h3>
+        <button  onclick="checkInfo();" class="my_button" > Continue! </button>
+        <button  onclick="window.toggle_instruction('page1')" class="my_button"> Back! </button>
+        <div id="error-message-info" style="color: red;"></div>
+      </div>
+
+      <div id="practice_page" class="hidden instruction_page">
+        <p> This is the practice section. You will see a pair of human happy figures. You need to choose the  <strong>happier</strong> one in each pair.  </p>
+        <h3> Please choose the image that you think is happier. </h2>
+        <p><span style="font-size: 18px;"> You can use mouse to <span style="font-size: 30px;"><b>click</b></span> the figure you want to select directly.<br> Or you can also press <span style="font-size: 30px;"><b>q</b></span> on your keyboard for selecting the left figure, press <span style="font-size: 30px;"><b>p</b></span> for selecting the right figure. </span></p>
+        <p> <span style="font-size: 18px;"> Please choose between using either the keyboard or the mouse as your input method. Do not use both at the same time. (If pressing <b>q</b> or <b>p</b> doesn't respond, you may need to use mouse for once.) </span></p>
+          <div class="number-container">
+          <p class="number" id="experimentCounter_practice" name="experimentCounter">0</p>
+        </div>
+        <div id="practice-image-container" class="hidden">
+          <img id="image_num_7" class='practice-image' src="/static/experiments/current/nikola_sad/stimuli/img_happy_20.png" width="auto">
+          <img id="image_num_1" class='practice-image' src="/static/experiments/current/nikola_sad/stimuli/img_happy_40.png" width="auto">
+          <img id="image_num_5" class='practice-image' src="/static/experiments/current/nikola_sad/stimuli/img_happy_60.png" width="auto">
+          <img id="image_num_3" class='practice-image' src="/static/experiments/current/nikola_sad/stimuli/img_happy_80.png" width="auto">
+          <img id="image_num_9" class='practice-image' src="/static/experiments/current/nikola_sad/stimuli/img_happy_100.png" width="auto">
+          <!-- <img id="pr_hu_img1" class='image' src="/static/experiments/current/nikola_sad/stimuli/pr_hu_img1.jpeg"> -->
+          <!-- <img id="pr_hu_img2" class='image' src="/static/experiments/current/nikola_sad/stimuli/pr_hu_img2.jpeg"> -->
+          <!-- <img id="pr_rb_img1" class='image' src="image_5.png">
+          <img id="pr_rb_img2" class='image' src="image_3.png"> -->
+        </div>
+        <hr>
+
+        <div id="practice_success" style="display:none;"> 
+          <button  onclick="window.toggle_instruction('exp_instruction_page'); destroyPractice();" class="my_button"> Continue! </button>
+
+          <h2>Here's your practice result:</h2> <br>
+        </div>
+      </div>
+      
+      <div id="exp_instruction_page" class="hidden instruction_page">
+        <h1>Take a break and read the instructions.</h1>
+        <p> You are going to do the <strong>real</strong> experiment. It will takes about <strong>one hour</strong>. You can take a break <strong>anytime</strong> during the experiment. All you need to do is to choose the image that matches the instruction.</p>
+        <!-- modify here ! Current is sad exp -->
+        <p> In this experiment, You will see pairs of robot figures showing the <strong>sad</strong> expressions. <br> Your task is to choose the image with <span style="font-size: 24px"><b>higher sad intensity (stronger)</b></span> among every pair.</span> <br>
+        <span style="font-size: 22px"> <b> Follow your first impression when it is hard to make a decision. </b> </span> </p>
+        <p><span style="font-size: 18px;"> You can use mouse to  <span style="font-size: 30px;"><b>click</b></span> the figure you want to select directly.<br> Or you can also press <span style="font-size: 30px;"><b>q</b></span> on your keyboard for selecting the left figure, press <span style="font-size: 30px;"><b>p</b></span> for selecting the right figure. </span></p>
+        <button  onclick="window.toggle_instruction('experiment_page'); startExperiment();" class="my_button"> Start experiment! </button>
+      </div>
+
+      <div id="experiment_page" class="hidden instruction_page">
+        <!-- modify here ! Current is sad exp -->
+        Your task is to choose the <span style="font-size: 24px"><b>stronger sad expressions</b></span> among every pair.</span> <br>
+        <p><span style="font-size: 18px;"> You can use mouse to <span style="font-size: 30px;"><b>click</b></span> the figure you want to select directly.<br> Or you can also press <span style="font-size: 30px;"><b>q</b></span> on your keyboard for selecting the left figure, press <span style="font-size: 30px;"><b>p</b></span> for selecting the right figure. </span></p>
+        <p> <span style="font-size: 18px;"> Please choose between using either the keyboard or the mouse as your input method. Do not use both at the same time. (If pressing <b>q</b> or <b>p</b> doesn't respond, you may need to use mouse for once.) </span></p>
+        
+        <div class="number-container">
+          <p>You have finished: </p>
+          <p class="number" id="experimentCounter_rating" name="experimentCounter">0</p>
+        </div>
+
+        <div id="experiment-image-container" class="hidden"></div> <br>
+        
+        <div id="experiment_success" style="display:none;"> 
+          <button  onclick="window.toggle_instruction('finish_page');" class="my_button"> Submit! </button>
+        </div>
+      </div>
+
+      <div id="finish_page" class="hidden instruction_page">
+            <h1>You have finished your experiment. Thank you.</h1>
+            <h4>If you are interesting in your sorting result, please click the button below.</h4> <br>
+            <button onclick="showExpResult();" class="my_button"> See results </button>
+      </div>
+
+</div>
+
+

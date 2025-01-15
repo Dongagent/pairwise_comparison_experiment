@@ -1,0 +1,71 @@
+.content{
+    padding:10px;
+    /* background-color: slategray; */
+    overflow: hidden;
+}
+
+.left{
+    float:left;
+}
+.sliders{
+    width:300px;
+    padding-bottom:25px;
+}
+.spotlightRadius{
+    width:100px;
+    height:100px;   
+}
+.emptrialCounterty{
+    width:75%;
+    text-align: center;
+}
+.radiusHolder, .btnHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnHolder{
+    margin-top: 1em;
+}
+.sideMenu{
+    padding: 10px;
+    margin:10px;
+    width:320px;
+    /* height:600px; */
+    background-color: antiquewhite;
+}
+#canvas{
+    margin:10px;
+}
+.lightWidget{
+    padding-top: 25px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.stimuli{max-width:500px;max-height: 500px;}
+
+.image{
+    max-height: 600px;
+}
+
+h1{
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+}
+/* Jquery UI */
+
+.disabled-btn{
+    opacity:0.35;
+    pointer-events: none;
+    cursor: default!important;
+}
+
+.canvas2holder{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.trialCounter{
+    padding:5px;
+}

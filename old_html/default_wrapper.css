@@ -1,0 +1,21 @@
+.hidden {
+    display:none
+}
+.show {
+    display:inline
+}
+
+body{
+    background-color: beige;
+    margin:0px;
+}
+.tutorial{
+    font-family: 'Crimson Text', serif;
+    padding: 2em;
+    line-height: 1.5;
+    font-size: 18pt;
+}
+
+button{
+    padding:5px;
+}
